@@ -8,26 +8,47 @@ function init() {
         console.log("init")
         check();
         hideEvent();
-    }, 50);
+    }, 500);
 }
 
 function check() {
-    this.target = document.getElementById("GOOGLE_INPUT_CHEXT_FLAG").nextElementSibling;
+    this.target = document.getElementById("GOOGLE_INPUT_CHEXT_FLAG");
 
-    if (this.target) {
-        console.log(this.target);
-    } else {
-        alert("cannot find the status bar")
-    }
+    while (true){
+        if (this.target.getAttribute("frameborder") == 0){
+            break;
+        }
+
+        if (this.target) {
+            this.target = this.target.nextElementSibling;
+            console.log(this.target);
+        } else {
+            console.log("cannot find the status bar")
+            break;
+        }
+    }    
 }
 
+// while (true){
+//     if (this.document.getAttribute("frameborder") == 0){
+//         break;
+//     }
+
+//     if (this.target) {
+//         this.target = this.target.nextElementSibling;
+//         console.log(this.target);
+//     } else {
+//         console.log("cannot find the status bar")
+//         break;
+//     }
+// }    
 
 const hideEvent = () => {
     // alert("hide!");
     if (target) {
         this.target.style.display = "none";
     } else {
-        alert("cannot find the status bar")
+        console.log("cannot find the status bar")
     }
 };
 
@@ -36,7 +57,7 @@ const showEvent = () => {
     if (target) {
         this.target.style.display = "inline";
     } else {
-        alert("cannot find the status bar")
+        console.log("cannot find the status bar")
     }
 }
 
